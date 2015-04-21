@@ -1,0 +1,1 @@
+root index n plus 1 of fraction numerator sin squared left parenthesis x plus begin display style straight pi over 2 end style right parenthesis over denominator log subscript a plus 5 end subscript left parenthesis b plus 7 right parenthesis plus 6 end fraction end root to the power of 14
