@@ -1,6 +1,6 @@
 # GDS
 ## You need to have constants.txt with variables in web root folder
-required variables:
+### Required variables:
 
 _mysqli_user
 
