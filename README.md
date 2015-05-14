@@ -3,7 +3,6 @@
 required variables:
 
 _mysqli_user
-
 _mysqli_pass
 
 _mysqli_db
