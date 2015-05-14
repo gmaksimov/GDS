@@ -11,3 +11,5 @@ _mysqli_db
 root_login
 
 root_psw
+### Example adding variable:
+_mysqli_user=name
