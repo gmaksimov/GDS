@@ -181,7 +181,7 @@ while($row = $result->fetch_array()){
     $date = $cur_date;
     $date_string = "Класс: $grade, Буклет: $booklet";
     if(check_privilegies("-1")){
-      $date_string .= " <a href='print4/print.php?year=$year&halfyear=$halfyear&grade=$grade&booklet=$booklet&paper=$paper' target = '_blank' class=capt>Печать по-админски</a>
+      $date_string .= " <a href='$current_print_folder/print.php?year=$year&halfyear=$halfyear&grade=$grade&booklet=$booklet&paper=$paper' target = '_blank' class=capt>Печать по-админски</a>
 	  <a href='options.php?pid=$pid' class=capt>опции</a>
 	  <a href='answers.php?year=$year&halfyear=$halfyear&grade=$grade&booklet=$booklet&paper=$paper' target = '_blank' class=capt>ответы</a>";
 	}
@@ -217,7 +217,7 @@ while($row = $result->fetch_array()){
   </form></td>
   <td width='8%'><a href='edit_test.php?pid=$pid'>Редактировать</a></td>";
   }
-  echo"<td width='7.5%'><a href='print4/print.php?year=$year&halfyear=$halfyear&grade=$grade&booklet=$booklet&paper=$paper&pid=$pid' target = '_blank'>";
+  echo"<td width='7.5%'><a href='$current_print_folder/print.php?year=$year&halfyear=$halfyear&grade=$grade&booklet=$booklet&paper=$paper&pid=$pid' target = '_blank'>";
   echo"Печатать</a></td>
   </tr>";
 }
