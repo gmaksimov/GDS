@@ -11,5 +11,9 @@ _mysqli_db
 root_login
 
 root_psw
+
+current_print_folder
+### Default value
+current_print_folder=print4
 ### Example adding variable:
 _mysqli_user=name
