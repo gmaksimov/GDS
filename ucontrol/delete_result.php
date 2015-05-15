@@ -88,7 +88,7 @@ while($row = $result->fetch_array()){
   <input type=text value=$pid name=Rpid hidden>
   <input type=submit value=&#1074;&#1086;&#1089;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;>
   </form></td>
-  <td width='10%'><a href='../print3/print1.php?year=$year&halfyear=$halfyear&grade=$grade&booklet=$booklet&pid=$pid' target = '_blank'>&#1087;&#1077;&#1095;&#1072;&#1090;&#1072;&#1090;&#1100;</a></td>
+  <td width='10%'><a href='../$current_print_folder/print.php?year=$year&halfyear=$halfyear&grade=$grade&booklet=$booklet&pid=$pid' target = '_blank'>&#1087;&#1077;&#1095;&#1072;&#1090;&#1072;&#1090;&#1100;</a></td>
   </tr>";
 }
 if($table_started){
