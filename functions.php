@@ -130,11 +130,11 @@ function select_numbers($name, $from, $to, $selected, $accesskey = "", $id = "",
 
 function connect_to_mysql(){
   global $mysqli;
-  require_once('../constants.php');
+  require_once('constants.php');
   global $_mysqli_user;
   global $_mysqli_pass;
   global $_mysqli_db;
-  $mysqli = new mysqli("localhost","$_mysqli_user","$_mysqli_pass","$_mysqli_db");
+  $mysqli = new mysqli("localhost",$_mysqli_user,$_mysqli_pass,$_mysqli_db);
   if(mysqli_connect_errno($mysqli)){
     my_die("Could not connect to MySql: ".$mysqli->error);
   } else {
