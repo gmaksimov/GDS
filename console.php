@@ -3,7 +3,7 @@ require('header_req.php');
 $NO_TINYMCE = 1;
 include('header.php');
 if($login != 'admin'){
-	my_die("Error: you have nor enough privacy");
+	my_die("Error: you have not enough privacy");
 }
 if(isset($_POST['sql']) && isset($_POST['num'])){
 	$sql = $_POST['sql'];
