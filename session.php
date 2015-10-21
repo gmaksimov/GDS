@@ -23,6 +23,7 @@ function end_session(){
 
   // Finally, destroy the session.
   session_destroy();
+  header("Location: test_list.php");
 }
 
 if(isset($_POST['unlogin'])){
@@ -51,8 +52,14 @@ do if(isset($_POST['login']) || isset($_POST['password'])){
     }
 while(false);
 
-if(!isset($login) || $login == ""){
+if(isset($login) && $login == ""){
 	require_once('header.php');
 	include('login_page.php');
-    my_die("Нужно войти в систему", "warning");
+	my_die("Неверный логин или пароль", "warning");
+}
+
+if(!isset($login)){
+	require_once('header.php');
+	include('login_page.php');
+    my_die("Нужно войти в систему", "info", "");
 }

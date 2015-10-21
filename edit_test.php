@@ -14,6 +14,11 @@ if(isset($_POST['paper']) && isset($_POST['year'])
 	$subject = addslashes($_POST['subject']);
 	$position = addslashes($_POST['position']);
 	$pid = addslashes($_POST['pid']);
+	if(isset($_POST['taskcount']) && $_POST['taskcount'] > 0){
+		$taskcount = addslashes($_POST['taskcount']);
+	}else{
+		$taskcount = 0;
+	}
 	
 	//create new test
 	if($pid == -1){
@@ -26,8 +31,8 @@ if(isset($_POST['paper']) && isset($_POST['year'])
 		$result = $mysqli->query($sql) OR my_die("Error: ".$mysqli->error);
 		$row = $result->fetch_array();
 		$position = $row['Position'] + 1;
-		$sql = "INSERT INTO Tests (Paper, Year, Halfyear, Grade, Booklet, Subject, Position) VALUES
-		('$paper', '$year', '$halfyear', '$grade', '$booklet', '$subject', '$position')";
+		$sql = "INSERT INTO Tests (Paper, Year, Halfyear, Grade, Booklet, Subject, Position, Taskcount) VALUES
+		('$paper', '$year', '$halfyear', '$grade', '$booklet', '$subject', '$position', '$taskcount')";
 		$result = $mysqli->query($sql) OR my_die("Ошибка создания теста: ".$mysqli->error);
 		$pid = $mysqli->insert_id;
 		refresh_test_positions();
@@ -36,12 +41,12 @@ if(isset($_POST['paper']) && isset($_POST['year'])
 	
 	//update test
 	if(!check_privilegies($pid)){
-		my_die("У вас нет права на создание предмета, нужно $pid");
+		my_die("У вас нет права на изменение предмета, нужно $pid");
 	}
 	$sql = "UPDATE Tests SET 
 	Paper = '$paper', Year = '$year', Halfyear = '$halfyear',
 	Grade = '$grade', Booklet = '$booklet', Subject = '$subject',
-	Position = '$position' WHERE PID = '$pid'";
+	Position = '$position', Taskcount = '$taskcount' WHERE PID = '$pid'";
 	if(!$mysqli->query($sql)){
 		my_die("Ошибка сохранения теста: ".$mysqli->error);
 	}
@@ -60,6 +65,7 @@ if(isset($_GET['new']) && $_GET['new'] == 1){
 	$time = 0;
 	$position = -1;
 	$pid = -1;
+	$taskcount = 0;
 }else if(isset($_GET['exam']) && $_GET['exam'] != NULL){	//fast adding
 	if(!check_privilegies("-1")){
 		my_die("У вас нет права на создание предмета, нужно -1");
@@ -74,6 +80,7 @@ if(isset($_GET['new']) && $_GET['new'] == 1){
 	$paper = $row['Paper'];
 	$grade = $row['Grade'];
 	$booklet = $row['Booklet'];
+	$taskcount = 0;
 	$subject = "";
 	$time = 0;
 	$position = -1;
@@ -91,6 +98,7 @@ if(isset($_GET['new']) && $_GET['new'] == 1){
 	$subject = $row['Subject'];
 	$time = $row['Time'];
 	$position = $row['Position'];
+	$taskcount = $row['Taskcount'];
 }else{
 	my_die("Не дан PID");
 }
@@ -126,7 +134,8 @@ if(isset($_GET['new']) && $_GET['new'] == 1){
 	echo input_data_list("Предмет","subject", "Subject", $subject);
 }
 echo "
-	<input tupe=text hidden value='$position' name=position>
+	<label for=taskcount>Кол-во вопросов: </label><input type=number min=0 value='$taskcount' name=taskcount id=taskcount><br>
+	<input type=text hidden value='$position' name=position>
 	<input type=text hidden value='$pid' name=pid>
 	<input type=submit value='Сохранить [s]' title='accesskey: [s]' accesskey=s>
 </form>";

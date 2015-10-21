@@ -105,7 +105,6 @@ echo"
 	</li>
 </ul>
 <br>
-<input type=number min=1>
 <input type=submit value='Сохранить[s]' accesskey=s>
 </form>";
 

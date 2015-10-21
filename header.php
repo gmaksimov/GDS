@@ -34,7 +34,7 @@ if(!(isset($NO_TINYMCE) && $NO_TINYMCE == 1)){
 </head>
 	<body>
 <?php
-if(!isset($login)){
+if(!isset($login) || $login == ""){
 return;
 }
 echo "<strong>Ваш логин: </strong><font>$login</font>";
@@ -54,7 +54,7 @@ foreach($privs as $p){
 $privs_string = substr($privs_string, 0, -2);
 echo $privs_string;*/
 $sql = "SELECT * FROM Messages WHERE Addressee='$login'";
-$result = $mysqli->query($sql) OR my_die("Error checking viewed messages".$mysqli->error);
+$result = $mysqli->query($sql) OR my_die("Error checking viewed messages: ".$mysqli->error);
 $vcol = 0;
 while($row = $result->fetch_array()){
 	if($row['Viewed'] == 1){

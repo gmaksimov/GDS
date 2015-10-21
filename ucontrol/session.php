@@ -26,7 +26,7 @@ function end_session(){
   session_destroy();
 }
 
-require_once('../../constants.php');
+require_once('../constants.php');
 global $root_login;
 global $root_psw;
 
