@@ -52,7 +52,7 @@ function getOrdinalSuffix($int) {
 	return $suffixes[$x];
 }
 
-function my_die($message, $time = -1,$type = "error"){
+function my_die($message, $type = "error", $head = "Ошибка", $time = -1){
     include_once('header.php');
 	global $MSG;
 	if(isset($message) && $message != NULL){
@@ -61,7 +61,7 @@ function my_die($message, $time = -1,$type = "error"){
 		if($time = -1){
 			$time = 10000000;
 		}
-		$MSG[] = array('Ошибка', "$message", "$type", $time);
+		$MSG[] = array("$head", "$message", "$type", $time);
 	}
     include_once('footer.php');
     die();
