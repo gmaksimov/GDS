@@ -89,7 +89,7 @@ if(isset($_POST['question']) && isset($_POST['ans1']) && isset($_POST['ans2']) &
 						 "Картинка не загружена, но попробуем сохранить задание...", "error");
 			break;
 		}
-		$filename = "pictues/".$picture;
+		$filename = "pictures/".$picture;
 		if($picture && file_exists("pictures/".$picture)){ 
 			unlink($filename);
 		}
@@ -99,7 +99,7 @@ if(isset($_POST['question']) && isset($_POST['ans1']) && isset($_POST['ans2']) &
 		if(!$mysqli->query($sql)){
 			show_message("Ошибка изменения пути к новой картинке: ".$mysqli->error, "error");
 		} else {
-			//show_message("Адрес новой картинки: $new_path", "ok");
+			show_message("Адрес новой картинки: $new_path", "ok");
 			$picture = $new_path;
 		}
 	} while(false);

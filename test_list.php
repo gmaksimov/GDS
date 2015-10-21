@@ -134,12 +134,10 @@ $colsp = 0;
 if(isset($SHOW_PRIVILEGIES) && $SHOW_PRIVILEGIES == 1){
 	$table2 .="<th>PID</th>";
 }
-$table2 .= "<th>Предмет</th>";
+$table2 .= "<th>Предмет</th>
+		<th>Кол-во заданий</th>";
 if(check_privilegies("-1")){
 	$table2 .= "
-		<th>
-			Кол-во заданий
-		</th>
 		<th colspan=2>
 			<form method=POST>
 				<input type=text name=Create value=rly hidden=hidden>
@@ -167,9 +165,10 @@ while($row = $result->fetch_array()){
   $position = $row['Position'];
   $paper = $row['Paper'];
   $time = $row['Time'];
+  $taskcount = $row['Taskcount'];
   $sql = "SELECT * FROM Tasks WHERE Tpid=$pid";
   $result1 = $mysqli->query($sql) OR my_die("Error: ".$mysqli->error);
-  $ans_count = $result1->num_rows;
+  $real_taskcount = $result1->num_rows;
   if(!check_privilegies($pid)){
     continue; 
   }
@@ -198,9 +197,18 @@ while($row = $result->fetch_array()){
 	echo"<td width=3%>$pid</td>";
 	}
 	echo"<td>$subject</td>";
+	$task_weight = "style='font-weight: bold'";
+	if($taskcount == 0 || $taskcount > $real_taskcount){
+		$task_color = "";
+		$task_weight = "";
+	}else if($taskcount == $real_taskcount){
+		$task_color = "color=green";
+	}else{
+		$task_color = "color=red";
+	}
+	echo "<td width=3%><font $task_color $task_weight>$real_taskcount/$taskcount</font></td>";
   if(check_privilegies("-1")){
     echo"
-	<td width=3%>$ans_count</td>
     <td width=4%><form method=POST>
     <input name=first hidden value=$pid>
 	<select name='second' onchange='this.form.submit()'>";
