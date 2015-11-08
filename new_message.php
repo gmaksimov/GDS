@@ -24,7 +24,7 @@ if(isset($_POST['send_message']) && isset($_POST['addressee'])){
 //show body
 echo"Выберете получателя (используйте CTRL и/или SHIFT чтобы выбрать больше одного получателя)<br>
 <form method=POST>
-<select name='addressee' multiple required>";
+<select name='addressee[]' multiple required>";
 $sql = "SELECT Login FROM Users WHERE login !='$login' ORDER BY PID";
 $result = $mysqli->query($sql) OR my_die("Ошибка получения данных во время выбора получателя: ".$mysqli->error);
 while($row = $result->fetch_array()){
