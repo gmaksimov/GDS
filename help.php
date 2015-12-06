@@ -1,4 +1,7 @@
 <?php
+/**
+ * Prints useful information about accesskeys
+ */
 require('header_req.php');
 include('header.php');
 ?>

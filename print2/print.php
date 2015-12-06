@@ -181,7 +181,7 @@ function FPage() //Prints First Page
     $this->Write(6,'1 2 3 4 5 6 7 8 9 0');
     $this->SetTextColor(0);
     $this->Ln();
-    $sql = "SELECT * FROM Tests WHERE Year='$year' AND Grade='$grade' AND Booklet='$booklet' AND Halfyear='$halfyear' AND deleted=0 ORDER BY Position";
+    $sql = "SELECT * FROM Tests WHERE Year='$year' AND Grade='$grade' AND Booklet='$booklet' AND Halfyear='$halfyear' AND Deleted=0 ORDER BY Position";
     $result = $mysqli->query($sql) OR my_die($mysqli->error);
     $test_count = $result->num_rows; //How many tests do we have
     $test_arr = array();

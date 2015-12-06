@@ -1,4 +1,8 @@
 <?php
+/**
+ * Gets constants (f.e. printing folder) from web root folder and making them global
+ */
+
 $file = ($_SERVER['DOCUMENT_ROOT']."/../constants.txt");
 $f = file($file);
 for($i = 0; $i < count($f); $i++){
