@@ -1,6 +1,12 @@
 <?php
+/**
+ * This page is for editing answers of 'subject'
+ */
+
 require('header_req.php');
+
 $NO_TINYMCE = 1;
+
 if(!isset($_GET['pid'])){
 	my_die("Не дан PID");
 }
@@ -33,26 +39,30 @@ if(isset($_POST['tasks'])){
 }
 
 include('header.php');
+
 $sql = "SELECT * FROM Tasks WHERE Tpid=$tpid ORDER BY Position";
 $result = $mysqli->query($sql) OR my_die("Ошибка получения данных: ".$mysqli->error);
 $tasks = $result->num_rows;
-echo"Есть $tasks заданий(и ответов).<br>";
-echo"<form method=POST>";
+echo"
+Есть $tasks заданий(и ответов).<br>
+<form method=POST>";
+
 for($i = 1; $row = $result->fetch_array(); $i++){
 	$answer = $row['Answer'];
 	if($i % 10 == 0){
-		echo "<div style='width: 20px; display: inline-block; text-align: center'><font color='red'> $i</font>: </div>";
+		$mod = "color='red'";
 	}else{
-		echo "<div style='width: 20px; display: inline-block; text-align: center'>$i: </div>";
+		$mod = "";
 	}
+	echo "<div style='width: 20px; display: inline-block; text-align: center'><font $mod> $i</font>: </div>";
 	echo select_numbers("ans$i", 1, 4, $answer);
-	//echo"<select type=text id=ans$i name=ans$i style='width: 20px;' value=$answer><br>";
 }
-echo"<br>
+
+echo"
+<br>
 <input type=text name=tasks hidden value=$tasks>
 <input type=submit value='Сохранить [s]' accesskey='s'>
 </form>";
 
 include('footer.php');
-
 ?>
