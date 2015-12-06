@@ -129,7 +129,7 @@ $year = $_GET['year'];
 $grade = $_GET['grade'];
 $booklet = $_GET['booklet'];
 $halfyear = $_GET['halfyear'];
-$sql = "SELECT * FROM Tests WHERE Year='$year' AND Grade='$grade' AND Booklet='$booklet' AND Halfyear='$halfyear' AND PID='$t1pid' ORDER BY Position";
+$sql = "SELECT * FROM Tests WHERE Year='$year' AND Grade='$grade' AND Booklet='$booklet' AND Halfyear='$halfyear' AND PID='$t1pid' AND Deleted=0 ORDER BY Position";
 $all_tests = $mysqli->query($sql) OR my_die("Error selecting test: ".$mysqli->error);
 $edf = 0;
 while($test = $all_tests->fetch_array()){

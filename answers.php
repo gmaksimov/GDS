@@ -1,7 +1,17 @@
 <?php
+/**
+ * Showing answers in easy way to checking machine
+ */
+
 require('header_req.php');
 $NO_TINYMCE = 1;
+
+if(!check_privilegies("-1")){
+	my_die("У вас нет прав для просмотра этой странички, нужно -1");
+}
+
 include('header.php');
+
 //show answers in textarea
 $year = $_GET['year'];
 $halfyear = $_GET['halfyear'];
@@ -22,19 +32,22 @@ while($row1 = $result1->fetch_array()){
 		$ans = $row['Answer'];
 		$pos = $row['Position'] / 10;
 		$ansr ="";
-		if($ans == 1){
-			$ec = 'A';
-		}else if($ans == 2){
-			$ec = 'B';
-		}else if($ans == 3){
-			$ec = 'C';
-		}else if($ans == 4){
-			$ec = 'D';
-		}else{
-			my_die("Error! Answer != 1-4");
+		switch($ans){
+			case 1:
+				$ec = 'A';
+				break;
+			case 2:
+				$ec = 'B';
+				break;
+			case 3:
+				$ec = 'C';
+				break;
+			case 4:
+				$ec = 'D';
+				break;
+			default:
+				my_die("Error! Answer != 1-4");
 		}
-		
-		//echo"$pos: $ans \n";
 		echo"$ec";
 	}
 	echo"\n\n";
