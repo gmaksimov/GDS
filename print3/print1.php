@@ -2,7 +2,7 @@
 require('../functions.php');
 connect_to_mysql();
 require('../session.php');
-require_once('tcpdf.php');
+require_once('../tcpdf/tcpdf.php');
 
 $t1pid = $_GET['pid'];
 

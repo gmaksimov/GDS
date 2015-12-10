@@ -6,9 +6,9 @@ require('tfpdf.php');
 
 $t1pid = $_GET['pid'];
 
-//if(check_privilegies('$t1pid')){
-//  my_die("Нужно право -1 для печти чего либо.'$tpid", "error");
-//}
+if(!check_privilegies('$t1pid')){
+  my_die("Нет прав для печти .'$tpid", "error");
+}
 
 class PDF extends tFPDF
 {
