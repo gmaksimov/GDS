@@ -32,7 +32,4 @@ Use `table.sql` to do it
 ### Tcpdf (print3, print4) (recommended)
 [Tcpdf](http://sourceforge.net/projects/tcpdf/files/) 6.2.11 and above
 Put `tcpdf/` into site folder
-### Tfpdf (print2)
-[Tfpdf](http://fpdf.org/fr/script/script92.php) 1.24 and above
-Put all files inside `print2`
 ### Tinymce
