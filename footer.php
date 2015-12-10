@@ -3,6 +3,7 @@
  * This page is for making correct footer and showing pop up messages
  */
 global $MSG;
+global $root_path;
 echo "
 <!--footer-->
 ";
@@ -14,8 +15,8 @@ if(isset($_SESSION['gds']['login']) && $_SESSION['gds'] != NULL){
 
 //for showing pop up messages
 echo "
-<script src='http://".$_SERVER['SERVER_NAME']."/msg/lib/jquery.min.js'></script>
-<script src='http://".$_SERVER['SERVER_NAME']."/msg/js/jquery.notification.min.js'></script>
+<script src='http://".$_SERVER['SERVER_NAME']."/$root_path/msg/lib/jquery.min.js'></script>
+<script src='http://".$_SERVER['SERVER_NAME']."/$root_path/msg/js/jquery.notification.min.js'></script>
 <script type='text/javascript'>
 $( document ).ready(function() {";
 
