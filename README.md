@@ -13,8 +13,14 @@
 `root_psw`
 
 `current_print_folder`
+
+`root_path`
 ### Default value
 `current_print_folder=print4`
+
+`root_path=`
+
+It means site in the `/`
 ### Example adding variable:
 `_mysqli_user=name`
 
