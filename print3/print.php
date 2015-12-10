@@ -2,7 +2,7 @@
 require('../functions.php');
 connect_to_mysql();
 require('../session.php');
-require_once('tcpdf.php');
+require_once('../tcpdf/tcpdf.php');
 
 if(!check_privilegies("-1")){
   my_die("you need -1 to print this");

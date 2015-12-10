@@ -5,7 +5,7 @@ require_once('../functions.php');
 connect_to_mysql();
 
 require('../session.php');
-require_once('tcpdf/tcpdf.php');
+require_once('../tcpdf/tcpdf.php');
 
 //check privilegies
 if(isset($_GET['pid'])){
