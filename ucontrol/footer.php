@@ -10,8 +10,8 @@ echo "
 
 //for showing pop up messages
 echo "
-<script src='http://".$_SERVER['SERVER_NAME']."/$root_path/msg/lib/jquery.min.js'></script>
-<script src='http://".$_SERVER['SERVER_NAME']."/$root_path/msg/js/jquery.notification.min.js'></script>
+<script src='http://".$_SERVER['SERVER_NAME']."/{$root_path}msg/lib/jquery.min.js'></script>
+<script src='http://".$_SERVER['SERVER_NAME']."/{$root_path}msg/js/jquery.notification.min.js'></script>
 <script type='text/javascript'>
 $( document ).ready(function() {";
 
