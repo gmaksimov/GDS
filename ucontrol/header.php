@@ -12,7 +12,7 @@ if(!(isset($NO_TINYMCE) && $NO_TINYMCE == 1)){
 			tinymce.init({
 				relative_urls : false,
 				remove_script_host : false,
-				document_base_url : "http://gdsmaker.u2m.ru/",
+				document_base_url : "http://'.$_SERVER['SERVER_NAME'].'/",
 				plugins : "table textcolor paste tiny_mce_wiris",
 				paste_as_text: true,
 				oninit : "setPlainText",
