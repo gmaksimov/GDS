@@ -69,8 +69,6 @@ if(isset($_POST['time']) && $_POST['time'] == 1 && isset($_POST['variable'])){
 	}
 }
 
-//TODO: grade field
-
 //copy subjects to another booklet
 if(isset($_POST['copy_tests']) && $_POST['copy_tests'] == 1 && isset($_POST['booklet']) && isset($_POST['grade']) && isset($_POST['subject'])){
 
@@ -89,8 +87,6 @@ if(isset($_POST['copy_tests']) && $_POST['copy_tests'] == 1 && isset($_POST['boo
 			$mygrade = addslashes($_POST['grade']);
 			$mysubject = $row['Subject'];
 		}
-
-		//my_die("$mybooklet $mygrade $mysubject");
 
 		//insert new 'subject'
 		$sql = "INSERT INTO Tests (Year, Halfyear, Grade, Paper, Booklet, Subject, Position, Taskcount) VALUES ($year, $halfyear, $mygrade, '$paper', '$mybooklet', '$mysubject', 10050000000, '$taskcount')";
@@ -111,7 +107,7 @@ if(isset($_POST['copy_tests']) && $_POST['copy_tests'] == 1 && isset($_POST['boo
 			$result1 = $mysqli->query($sql) OR my_die("Ошибка получения данных: ".$mysqli->error);
 
 			for($pos = 1; $test = $result1->fetch_array(); $pos++){
-				$sql = "INSERT INTO Tasks (Question, Ans1, Ans2, Ans3, Ans4, Answer, Tpid, Position) VALUES ('{$test['Question']}', '{$test['Ans1']}', '{$test['Ans2']}', '{$test['Ans3']}', '{$test['Ans4']}', '{$test['Answer']}', $last_id, $pos)";
+				$sql = "INSERT INTO Tasks (Question, Ans1, Ans2, Ans3, Ans4, Answer, Tpid, Position, Picture) VALUES ('{$test['Question']}', '{$test['Ans1']}', '{$test['Ans2']}', '{$test['Ans3']}', '{$test['Ans4']}', '{$test['Answer']}', $last_id, $pos, '{$test['Picture']}')";
 				if(!$mysqli->query($sql)){
 					my_die("Ошибка копирования заданий из $test_pid ".$mysqli->error);
 				}

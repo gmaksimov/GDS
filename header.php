@@ -56,6 +56,7 @@ $vcol = 0;
 while($row = $result->fetch_array()){
 	if($row['Viewed'] == 1){
 		$vcol++;
+		// Pop up notifications if you have new users' messages
 		/* 		$mes = substr($row['Message'], 0, 200);
 		 $mes = substr_replace("<p>", "", $mes);
 		 $mes = substr_replace("</p>", "", $mes);
