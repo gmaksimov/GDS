@@ -2,7 +2,7 @@
 require('../functions.php');
 connect_to_mysql();
 require('../session.php');
-require_once('tcpdf.php');
+require_once('../tcpdf/tcpdf.php');
 
 if(!check_privilegies("-1")){
   my_die("you need -1 to print this");
@@ -182,7 +182,7 @@ var $allfont;
     $this->Cell(50, 30,$paper,0,0,'C');
     $this->SetFont($allfont, '', 10);
     $this->Ln();
-    $sql = "SELECT * FROM Tests WHERE Year='$year' AND Grade='$grade' AND Booklet='$booklet' AND Halfyear='$halfyear' AND Paper='$paper' AND deleted=0 ORDER BY Position";
+    $sql = "SELECT * FROM Tests WHERE Year='$year' AND Grade='$grade' AND Booklet='$booklet' AND Halfyear='$halfyear' AND Paper='$paper' AND Deleted=0 ORDER BY Position";
     $result = $mysqli->query($sql) OR my_die($mysqli->error);
     $test_count = $result->num_rows; //How many tests do we have
     $test_arr = array();
@@ -258,7 +258,7 @@ $year = $_GET['year'];
 $grade = $_GET['grade'];
 $booklet = $_GET['booklet'];
 $halfyear = $_GET['halfyear'];
-$sql = "SELECT * FROM Tests WHERE Year='$year' AND Grade='$grade' AND Booklet='$booklet' AND Halfyear='$halfyear' AND deleted=0 ORDER BY Position";
+$sql = "SELECT * FROM Tests WHERE Year='$year' AND Grade='$grade' AND Booklet='$booklet' AND Halfyear='$halfyear' AND Deleted=0 ORDER BY Position";
 $all_tests = $mysqli->query($sql) OR my_die("Error selecting test: ".$mysqli->error);
 $edf = 0;
 while($test = $all_tests->fetch_array()){
