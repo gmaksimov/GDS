@@ -107,7 +107,7 @@ if(isset($_POST['copy_tests']) && $_POST['copy_tests'] == 1 && isset($_POST['boo
 			$result1 = $mysqli->query($sql) OR my_die("Ошибка получения данных: ".$mysqli->error);
 
 			for($pos = 1; $test = $result1->fetch_array(); $pos++){
-				$sql = "INSERT INTO Tasks (Question, Ans1, Ans2, Ans3, Ans4, Answer, Tpid, Position, Picture) VALUES ('{$test['Question']}', '{$test['Ans1']}', '{$test['Ans2']}', '{$test['Ans3']}', '{$test['Ans4']}', '{$test['Answer']}', $last_id, $pos, '{$test['Picture']}')";
+				$sql = "INSERT INTO Tasks (Question, Ans1, Ans2, Ans3, Ans4, Answer, Tpid, Position, Picture) VALUES ('".addslashes($test['Question'])."', '".addslashes($test['Ans1'])."', '".addslashes($test['Ans2'])."', '".addslashes($test['Ans3'])."', '".addslashes($test['Ans4'])."', '".addslashes($test['Answer'])."', $last_id, $pos, '".addslashes($test['Picture'])."')";
 				if(!$mysqli->query($sql)){
 					my_die("Ошибка копирования заданий из $test_pid ".$mysqli->error);
 				}
